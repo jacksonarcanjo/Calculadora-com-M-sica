@@ -16,6 +16,9 @@
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, rgba(26, 0, 51, 0.8), rgba(0, 0, 0, 0.9));
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     #efeito-fundo {
@@ -35,22 +38,22 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
-      margin-left: 80px;
-      transition: margin-left 0.3s ease;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
     }
 
     .logo {
-      max-width: 200px;
-      margin-bottom: 30px;
+      max-width: 150px;
+      margin-bottom: 20px;
     }
 
     .calculadora {
       background: #303134;
       border-radius: 20px;
       padding: 20px;
-      width: 280px;
+      width: 100%;
+      max-width: 320px;
       box-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
     }
 
@@ -75,10 +78,10 @@
     .btn {
       background: linear-gradient(45deg, #a259ff, #6200ea);
       color: white;
-      font-size: 20px;
+      font-size: 18px;
       border: none;
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(162, 89, 255, 0.5);
@@ -86,7 +89,7 @@
 
     .btn:hover {
       background: linear-gradient(45deg, #6200ea, #a259ff);
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
     .igual {
@@ -95,6 +98,21 @@
 
     .zero {
       grid-column: span 2;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+
+      .calculadora {
+        width: 100%;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 12px;
+      }
     }
   </style>
 </head>
@@ -163,33 +181,6 @@
       display.innerText = "Erro";
     }
   }
-
-  // Efeito de linhas animadas no fundo
-  const canvas = document.getElementById("efeito-fundo");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  let lines = Array.from({ length: 20 }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, length: Math.random() * 200 + 50, speed: Math.random() * 2 + 1 }));
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
-    ctx.lineWidth = 2;
-
-    lines.forEach(line => {
-      ctx.beginPath();
-      ctx.moveTo(line.x, line.y);
-      ctx.lineTo(line.x + line.length, line.y);
-      ctx.stroke();
-      line.y += line.speed;
-      if (line.y > canvas.height) {
-        line.y = -line.length;
-        line.x = Math.random() * canvas.width;
-      }
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
 </script>
 </body>
 </html>
