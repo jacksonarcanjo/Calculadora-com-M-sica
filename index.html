@@ -22,6 +22,8 @@
       position: fixed;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
       pointer-events: none;
     }
@@ -48,18 +50,18 @@
       background: #303134;
       border-radius: 20px;
       padding: 20px;
-      width: 300px;
+      width: 280px;
       box-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
     }
 
     #display {
       background: #171717;
       color: #fff;
-      font-size: 32px;
+      font-size: 30px;
       text-align: right;
-      padding: 20px;
+      padding: 18px;
       border-radius: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       min-height: 50px;
       overflow: hidden;
     }
@@ -67,200 +69,44 @@
     .botoes {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
 
     .btn {
-      background: #5f6368;
+      background: linear-gradient(45deg, #a259ff, #6200ea);
       color: white;
-      font-size: 24px;
+      font-size: 20px;
       border: none;
-      border-radius: 10px;
-      padding: 20px;
+      border-radius: 12px;
+      padding: 16px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(162, 89, 255, 0.5);
     }
 
     .btn:hover {
-      background: #a259ff;
-      box-shadow: 0 0 8px #a259ff;
+      background: linear-gradient(45deg, #6200ea, #a259ff);
+      transform: scale(1.08);
     }
 
     .igual {
-      background-color: #a259ff;
-      grid-column: span 1;
+      background: linear-gradient(45deg, #ff4081, #ff79b0);
     }
 
     .zero {
       grid-column: span 2;
     }
-
-    /* Sidebar */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 80px;
-      height: 100%;
-      background: linear-gradient(to bottom, #121212, #1c1c1c);
-      overflow-x: hidden;
-      transition: width 0.3s ease;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 20px;
-    }
-
-    .sidebar.open {
-      width: 200px;
-    }
-
-    .sidebar button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 18px;
-      width: 100%;
-      padding: 15px;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: background 0.2s;
-    }
-
-    .sidebar button:hover {
-      background: rgba(162, 89, 255, 0.2);
-    }
-
-    .sidebar i {
-      font-size: 20px;
-      width: 40px;
-      text-align: center;
-    }
-
-    #toggleSidebar {
-      margin-bottom: 30px;
-    }
-
-    .sidebar span {
-      display: none;
-    }
-
-    .sidebar.open span {
-      display: inline;
-    }
-
-    .music-controls {
-      margin: 10px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .music-controls button {
-      background-color: #a259ff;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .music-controls button:hover {
-      background-color: #8e3dff;
-    }
-
-    /* RESPONSIVO PARA CELULAR */
-    @media (max-width: 768px) {
-      .container {
-        height: auto;
-        margin-left: 0;
-        padding: 20px;
-      }
-
-      .logo {
-        max-width: 150px;
-        margin-bottom: 20px;
-      }
-
-      .calculadora {
-        width: 100%;
-        padding: 15px;
-      }
-
-      #display {
-        font-size: 24px;
-        padding: 15px;
-      }
-
-      .btn {
-        padding: 16px;
-        font-size: 18px;
-      }
-
-      .music-controls {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .sidebar {
-        height: auto;
-        flex-direction: row;
-        width: 100%;
-        padding: 10px;
-        overflow-x: auto;
-      }
-
-      .sidebar button {
-        flex-shrink: 0;
-        justify-content: center;
-        text-align: center;
-        font-size: 14px;
-        padding: 10px;
-      }
-
-      .sidebar span {
-        display: none !important;
-      }
-
-      .sidebar.open {
-        width: 100%;
-      }
-    }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <canvas id="efeito-fundo"></canvas>
-
-<div class="sidebar" id="sidebar">
-  <button id="toggleSidebar"><i class="fas fa-bars"></i><span> Menu</span></button>
-  <button><i class="fas fa-home"></i><span> Home</span></button>
-  <button><i class="fas fa-th"></i><span> Dashboard</span></button>
-  <button><i class="fas fa-compass"></i><span> Explore</span></button>
-  <button><i class="fas fa-chart-bar"></i><span> Analytics</span></button>
-  <button><i class="fas fa-cog"></i><span> Settings</span></button>
-  <button><i class="fas fa-user"></i><span> Account</span></button>
-  <button><i class="fas fa-flag"></i><span> Report</span></button>
-  <button><i class="fas fa-envelope"></i><span> Contact</span></button>
-  <button><i class="fas fa-sign-out-alt"></i><span> Logout</span></button>
-</div>
-
-<div class="container" id="mainContent">
+<div class="container">
   <img src="logo.jpg" alt="Logo" class="logo">
-
   <div class="music-controls">
-    <button onclick="ativarSom()">Ativar Música</button>
-    <button onclick="pararSom()">Parar Música</button>
+    <button class="btn" onclick="ativarSom()">Ativar Música</button>
+    <button class="btn" onclick="pararSom()">Parar Música</button>
   </div>
-
   <audio id="musica" src="ME JALO.mp3"></audio>
-
   <div class="calculadora">
     <div id="display">0</div>
     <div class="botoes">
@@ -268,22 +114,18 @@
       <button class="btn" onclick="addOperador('/')">/</button>
       <button class="btn" onclick="addOperador('*')">*</button>
       <button class="btn" onclick="apagar()">←</button>
-
       <button class="btn" onclick="addNumero('7')">7</button>
       <button class="btn" onclick="addNumero('8')">8</button>
       <button class="btn" onclick="addNumero('9')">9</button>
       <button class="btn" onclick="addOperador('-')">-</button>
-
       <button class="btn" onclick="addNumero('4')">4</button>
       <button class="btn" onclick="addNumero('5')">5</button>
       <button class="btn" onclick="addNumero('6')">6</button>
       <button class="btn" onclick="addOperador('+')">+</button>
-
       <button class="btn" onclick="addNumero('1')">1</button>
       <button class="btn" onclick="addNumero('2')">2</button>
       <button class="btn" onclick="addNumero('3')">3</button>
       <button class="btn igual" onclick="calcular()">=</button>
-
       <button class="btn zero" onclick="addNumero('0')">0</button>
       <button class="btn" onclick="addNumero('.')">.</button>
     </div>
@@ -291,22 +133,6 @@
 </div>
 
 <script>
-  document.getElementById("toggleSidebar").addEventListener("click", () => {
-    document.getElementById("sidebar").classList.toggle("open");
-  });
-
-  function ativarSom() {
-    const audio = document.getElementById("musica");
-    audio.volume = 0.1;
-    audio.play();
-  }
-
-  function pararSom() {
-    const audio = document.getElementById("musica");
-    audio.pause();
-    audio.currentTime = 0;
-  }
-
   let display = document.querySelector("#display");
 
   function addNumero(num) {
@@ -319,11 +145,7 @@
 
   function addOperador(op) {
     const ultimo = display.innerText.slice(-1);
-    if ("+-*/".includes(ultimo)) {
-      display.innerText = display.innerText.slice(0, -1) + op;
-    } else {
-      display.innerText += op;
-    }
+    if (!"+-*/".includes(ultimo)) display.innerText += op;
   }
 
   function limpar() {
@@ -331,11 +153,7 @@
   }
 
   function apagar() {
-    if (display.innerText.length > 1) {
-      display.innerText = display.innerText.slice(0, -1);
-    } else {
-      display.innerText = "0";
-    }
+    display.innerText = display.innerText.length > 1 ? display.innerText.slice(0, -1) : "0";
   }
 
   function calcular() {
@@ -346,52 +164,31 @@
     }
   }
 
-  // Efeito de partículas
+  // Efeito de linhas animadas no fundo
   const canvas = document.getElementById("efeito-fundo");
   const ctx = canvas.getContext("2d");
-  let particles = [];
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-
-  document.addEventListener("mousemove", (e) => {
-    for (let i = 0; i < 5; i++) {
-      particles.push({
-        x: e.clientX,
-        y: e.clientY,
-        radius: Math.random() * 3 + 1,
-        alpha: 1,
-        dx: (Math.random() - 0.5) * 2,
-        dy: (Math.random() - 0.5) * 2,
-        color: `rgba(162, 89, 255,`
-      });
-    }
-  });
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let lines = Array.from({ length: 20 }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, length: Math.random() * 200 + 50, speed: Math.random() * 2 + 1 }));
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((p, i) => {
-      p.x += p.dx;
-      p.y += p.dy;
-      p.alpha -= 0.02;
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.lineWidth = 2;
 
-      if (p.alpha <= 0) {
-        particles.splice(i, 1);
-      }
-
+    lines.forEach(line => {
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + p.alpha + ")";
-      ctx.fill();
+      ctx.moveTo(line.x, line.y);
+      ctx.lineTo(line.x + line.length, line.y);
+      ctx.stroke();
+      line.y += line.speed;
+      if (line.y > canvas.height) {
+        line.y = -line.length;
+        line.x = Math.random() * canvas.width;
+      }
     });
     requestAnimationFrame(animate);
   }
-
   animate();
 </script>
 </body>
