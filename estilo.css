@@ -1,0 +1,19 @@
+.logo {
+    display: block;
+    margin: 40px auto 20px auto;
+    max-width: 200px;
+    height: auto;
+  }
+  #efeito-fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .calculadora, .logo {
+    position: relative;
+    z-index: 1;
+    
+  }
+  
