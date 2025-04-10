@@ -99,21 +99,6 @@
     .zero {
       grid-column: span 2;
     }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 10px;
-      }
-
-      .calculadora {
-        width: 100%;
-      }
-
-      .btn {
-        font-size: 16px;
-        padding: 12px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -151,35 +136,16 @@
 </div>
 
 <script>
-  let display = document.querySelector("#display");
-
-  function addNumero(num) {
-    if (display.innerText === "0") {
-      display.innerText = num;
-    } else {
-      display.innerText += num;
-    }
+  function ativarSom() {
+    const audio = document.getElementById("musica");
+    audio.volume = 0.1;
+    audio.play();
   }
 
-  function addOperador(op) {
-    const ultimo = display.innerText.slice(-1);
-    if (!"+-*/".includes(ultimo)) display.innerText += op;
-  }
-
-  function limpar() {
-    display.innerText = "0";
-  }
-
-  function apagar() {
-    display.innerText = display.innerText.length > 1 ? display.innerText.slice(0, -1) : "0";
-  }
-
-  function calcular() {
-    try {
-      display.innerText = eval(display.innerText);
-    } catch {
-      display.innerText = "Erro";
-    }
+  function pararSom() {
+    const audio = document.getElementById("musica");
+    audio.pause();
+    audio.currentTime = 0;
   }
 </script>
 </body>
