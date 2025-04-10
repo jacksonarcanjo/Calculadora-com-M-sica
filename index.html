@@ -147,6 +147,64 @@
     audio.pause();
     audio.currentTime = 0;
   }
+
+  let display = document.querySelector("#display");
+
+  function addNumero(num) {
+    if (display.innerText === "0") {
+      display.innerText = num;
+    } else {
+      display.innerText += num;
+    }
+  }
+
+  function addOperador(op) {
+    const ultimo = display.innerText.slice(-1);
+    if (!"+-*/".includes(ultimo)) display.innerText += op;
+  }
+
+  function limpar() {
+    display.innerText = "0";
+  }
+
+  function apagar() {
+    display.innerText = display.innerText.length > 1 ? display.innerText.slice(0, -1) : "0";
+  }
+
+  function calcular() {
+    try {
+      display.innerText = eval(display.innerText);
+    } catch {
+      display.innerText = "Erro";
+    }
+  }
+
+  // Efeito de fundo animado
+  const canvas = document.getElementById("efeito-fundo");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let lines = Array.from({ length: 20 }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, length: Math.random() * 200 + 50, speed: Math.random() * 2 + 1 }));
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.lineWidth = 2;
+
+    lines.forEach(line => {
+      ctx.beginPath();
+      ctx.moveTo(line.x, line.y);
+      ctx.lineTo(line.x + line.length, line.y);
+      ctx.stroke();
+      line.y += line.speed;
+      if (line.y > canvas.height) {
+        line.y = -line.length;
+        line.x = Math.random() * canvas.width;
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
 </script>
 </body>
 </html>
